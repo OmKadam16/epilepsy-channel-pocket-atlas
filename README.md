@@ -5,6 +5,9 @@ Pilot on **Nav1.1 (SCN1A), Nav1.2 (SCN2A), KCNQ2**, with pockets detected by **f
 
 **Status: exploratory pilot, not a validated result.**
 
+## Pipeline overview
+![Pipeline](figures/fig0_pipeline.png)
+
 ## Figures
 ![Enrichment](figures/fig1_enrichment.png)
 
@@ -29,7 +32,7 @@ Pilot on **Nav1.1 (SCN1A), Nav1.2 (SCN2A), KCNQ2**, with pockets detected by **f
 ```
 pip install -r requirements.txt
 cd scripts
-python3 03_build_table.py && python3 04_clinvar_background_test.py && python3 05_region_matched_test.py && python3 06_gnomad_control_test.py && python3 07_figures.py
+python3 03_build_table.py && python3 04_clinvar_background_test.py && python3 05_region_matched_test.py && python3 06_gnomad_control_test.py && python3 07_figures.py && python3 08_pipeline_diagram.py
 ```
 
 ## Pilot results (pathogenic positions, pocket vs elsewhere, gnomAD controls)
