@@ -26,7 +26,7 @@ Pilot on **Nav1.1 (SCN1A), Nav1.2 (SCN2A), KCNQ2**, with pockets detected by **f
 2. **Lining residues**: protein residues with any heavy atom within 4 A of a pocket's alpha-spheres (`scripts/01`, `02`).
 3. **Variants**: ClinVar missense (pathogenic/likely pathogenic = case positions; benign/likely benign = sensitivity only) and gnomAD v4 missense seen in >= 2 alleles (controls). Pulled in the browser with `browser/*.js`, stored as hex bitsets of unique residue positions in `data/variants/`.
 4. **Tests** (`scripts/03`-`06`): residue-level (unique positions), Fisher exact, logistic regression adjusted for relative solvent accessibility, and permutation within burial bins (and sequence windows).
-5. **Positive control**: fpocket's best KCNQ2 pocket lines 7/13 retigabine-contact residues in 7CR2 (`browser/retigabine_contacts.js`).
+5. **Positive controls**: (a) fpocket's best KCNQ2 pocket lines 7/13 retigabine-contact residues in 7CR2 (`browser/retigabine_contacts.js`). (b) Nav1.7 + lamotrigine, 8THH (`browser/lamotrigine_control.js`): site 1 is lined by a druggable pocket (druggability 0.997, 11/13 contact residues); site 2 is also detected as a pocket (7/8 contact residues) but fpocket scores it 0.078, so a druggability >= 0.5 cut-off would miss it.
 
 ## Run
 ```
@@ -47,4 +47,4 @@ python3 03_build_table.py && python3 04_clinvar_background_test.py && python3 05
 - ClinVar is biased towards tested hotspots. Few pocket residues carry any gnomAD variant.
 - Nav structures contain the alpha subunit only (no membrane or beta subunits). KCNQ2 pocket list was assembled from druggable pocket classes, not a full table.
 - Numbering between ClinVar/gnomAD and structures is assumed to match; spot-checked only.
-- Nav1.7/lamotrigine (8THH) control not yet run. Novelty search was brief.
+- fpocket's druggability score can miss small fenestration-type drug sites (lamotrigine site 2 in 8THH scored 0.078), so the >= 0.5 definition is conservative. Novelty search was brief.
