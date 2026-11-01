@@ -5,6 +5,19 @@ Pilot on **Nav1.1 (SCN1A), Nav1.2 (SCN2A), KCNQ2**, with pockets detected by **f
 
 **Status: exploratory pilot, not a validated result.**
 
+## Figures
+![Enrichment](figures/fig1_enrichment.png)
+
+*Fig 1. Fraction of positions that are pathogenic, inside vs outside druggable pockets (labelled positions only).*
+
+![Sequence tracks](figures/fig2_sequence_tracks.png)
+
+*Fig 2. Pathogenic (orange), population-only (gray) and pocket-lining (blue) positions along each channel. Gray marks positions seen in gnomAD that are not pathogenic, so it thins out where pathogenic coverage is dense (e.g. KCNQ2 residues ~195-330). That imbalance is the ascertainment problem the region-matched test tries to control for.*
+
+![Retigabine control](figures/fig3_retigabine_control.png)
+
+*Fig 3. KCNQ2 positive control: 7 of 13 retigabine-contact residues (7CR2) line fpocket's best druggable pocket in the apo structure (7CR0).*
+
 ## Pipeline
 1. **Pockets**: fpocket (Vecura) on PDB 7DTD (Nav1.1), 6J8E (Nav1.2), 7CR0 (KCNQ2). Druggable = druggability score >= 0.5. Outputs are in `data/pockets/`.
 2. **Lining residues**: protein residues with any heavy atom within 4 A of a pocket's alpha-spheres (`scripts/01`, `02`).
@@ -16,7 +29,7 @@ Pilot on **Nav1.1 (SCN1A), Nav1.2 (SCN2A), KCNQ2**, with pockets detected by **f
 ```
 pip install -r requirements.txt
 cd scripts
-python3 03_build_table.py && python3 04_clinvar_background_test.py && python3 05_region_matched_test.py && python3 06_gnomad_control_test.py
+python3 03_build_table.py && python3 04_clinvar_background_test.py && python3 05_region_matched_test.py && python3 06_gnomad_control_test.py && python3 07_figures.py
 ```
 
 ## Pilot results (pathogenic positions, pocket vs elsewhere, gnomAD controls)
